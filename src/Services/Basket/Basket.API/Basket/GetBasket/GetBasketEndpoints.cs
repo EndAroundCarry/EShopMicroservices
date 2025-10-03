@@ -9,8 +9,8 @@ namespace Basket.API.Basket.GetBasket
         {
             app.MapGet("/basket/{userName}", async (string userName, ISender sender) =>
             {
-                var result = sender.Send(new GetBasketQuery(userName));
-                var response = (await result).Adapt<GetBasketResponse>();
+                var result = await sender.Send(new GetBasketQuery(userName));
+                var response = result.Adapt<GetBasketResponse>();
                 return Results.Ok(response);
             })
             .WithName("GetBasket")
