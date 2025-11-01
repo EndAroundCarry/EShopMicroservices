@@ -4,9 +4,9 @@ using BuildingBlocks.Pagination;
 namespace Ordering.Application.Orders.Queries.GetOrders
 {
     public class GetOrdersHandler(IApplicationDbContext dbContext)
-        : IQueryHandler<GetOrdersQuery, GetOrdersRequest>
+        : IQueryHandler<GetOrdersQuery, GetOrdersResult>
     {
-        public async Task<GetOrdersRequest> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
+        public async Task<GetOrdersResult> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
         {
             var pageIndex = query.PaginationRequest.PageIndex;
             var pageSize = query.PaginationRequest.PageSize;
